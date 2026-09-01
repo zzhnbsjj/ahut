@@ -536,4 +536,4 @@ def main():
     return results
 if __name__ == '__main__':
     main()
-    input('签到流程已完成，按回车键退出...')
+  
