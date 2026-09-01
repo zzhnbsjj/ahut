@@ -95,10 +95,19 @@ class User:
 #       []内的为可选列表，推荐logging.INFO)
 LOG_GRADE = logging.INFO
 # 用户列表，每一个元素是用户对象
-USER_LIST = [
-    User(student_Id=int(input("请输入学号后回车")),password=input('请输入密码(默认密码可以直接回车)').strip() or "Ahgydx@920")
-]
-# 单次尝试签到最大尝试次数
+import os
+# 读取环境变量，适配Github Actions自动运行
+student_id_str = os.getenv("STUDENT_ID")
+pwd = os.getenv("PASSWORD")
+
+# 本地运行才触发input输入
+if student_id_str is None:
+    student_id_str = input("请输入学号后回车")
+if pwd is None:
+    pwd = input("请输入密码(默认密码可以直接回车)").strip() or "Ahgydx@920"
+
+student_id = int(student_id_str)
+USER_LIST = [User(student_id=student_id,password=pwd)]# 单次尝试签到最大尝试次数
 MAX_RETRIES = 4
 # 单次尝试签到因TOKEN失效最大额外尝试次数
 MAX_TOKEN_RETRIES = 3
