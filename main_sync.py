@@ -107,7 +107,7 @@ if pwd is None:
     pwd = input("请输入密码(默认密码可以直接回车)").strip() or "Ahgydx@920"
 
 student_id = int(student_id_str)
-USER_LIST = [User(student_id=student_id,password=pwd)]# 单次尝试签到最大尝试次数
+USER_LIST = [User(student_id,password=pwd)]# 单次尝试签到最大尝试次数
 MAX_RETRIES = 4
 # 单次尝试签到因TOKEN失效最大额外尝试次数
 MAX_TOKEN_RETRIES = 3
